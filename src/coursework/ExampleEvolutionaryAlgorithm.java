@@ -12,7 +12,7 @@ import javax.swing.*;
 /**
  * Implements a basic Evolutionary Algorithm to train a Neural Network
  * 
- * You Can Use This Class to implement your EA or implement your own class that extends {@link NeuralNetwork} 
+ * 
  * 
  */
 public class ExampleEvolutionaryAlgorithm extends NeuralNetwork {
@@ -32,8 +32,7 @@ public class ExampleEvolutionaryAlgorithm extends NeuralNetwork {
 		/**
 		 * main EA processing loop
 		 */		
-		//TODO: experiments :D
-		while (evaluations < Parameters.maxEvaluations) {  //https://medium.datadriveninvestor.com/population-initialization-in-genetic-algorithms-ddb037da6773 steady state vs generational
+		while (evaluations < Parameters.maxEvaluations) {  
 
 			/**
 			 * this is a skeleton EA - you need to add the methods.
@@ -116,6 +115,7 @@ public class ExampleEvolutionaryAlgorithm extends NeuralNetwork {
 		return population;
 	}
 
+	//initialises population with good members
 	private ArrayList<Individual> seededInitialise() {
 		population = new ArrayList<>();
 		for (int i = 0; i < (Parameters.popSize - 2); ++i) {
@@ -145,12 +145,16 @@ public class ExampleEvolutionaryAlgorithm extends NeuralNetwork {
 	 *
 	 *
 	 */
+
+	 //randomly selects a member of population
 	public Individual randomSelect(){
 			Individual parent = population.get(Parameters.random.nextInt(Parameters.popSize));
 
 			return parent.copy();
 	}
 
+
+	//selects from best of n members randomly chosen
 	public Individual tournamentSelect(){
 
 		ArrayList<Individual> tournamentParticipants = new ArrayList<>();
@@ -161,6 +165,7 @@ public class ExampleEvolutionaryAlgorithm extends NeuralNetwork {
 		}
 		return getBest(tournamentParticipants);
 	}
+
 
 	private Individual select() {
 		if (Parameters.selectionOperator == "random") return randomSelect();
@@ -175,6 +180,8 @@ public class ExampleEvolutionaryAlgorithm extends NeuralNetwork {
 	 *
 	 *
 	 */
+
+
 	private ArrayList<Individual> reproduce(Individual parent1, Individual parent2) {
 		ArrayList<Individual> children = new ArrayList<>();
 		children.add(parent1.copy());
@@ -297,7 +304,7 @@ public class ExampleEvolutionaryAlgorithm extends NeuralNetwork {
 
 		}
 	}
-
+	
 	private void gaussianMutate(ArrayList<Individual> individuals) {
 		for(Individual individual : individuals) {
 			for (int i = 0; i < individual.chromosome.length; i++) {
