@@ -44,8 +44,8 @@ public class Parameters {
 	// Parameters for mutation 
 	// Rate = probability of changing a gene
 	// Change = the maximum +/- adjustment to the gene value
-	public static double mutateRate = 0.06; // mutation rate for mutation operator, default = 0.04 best = 1?
-	public static double mutateChange = 0.1; // delta change for mutation operator, default = 0.1 best = 2?
+	public static double mutateRate = 0.06; // mutation rate for mutation operator, default = 0.04 
+	public static double mutateChange = 0.1; // delta change for mutation operator, default = 0.1 
 	
 	//Random number generator used throughout the application
 	public static long seed = System.currentTimeMillis();
